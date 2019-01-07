@@ -1,0 +1,32 @@
+table {
+  width: 100%;
+}
+
+.filter-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: stretch;
+}
+
+mat-form-field, input, mat-datepicker {
+  width: 100%;
+}
+
+pre {
+  background-color: #858585;
+}
+
+
+mat-cell{
+  display:flex !important;
+  justify-content:center!important;
+
+}
+
+mat-header-cell {
+  display:flex;
+  justify-content:center;
+}

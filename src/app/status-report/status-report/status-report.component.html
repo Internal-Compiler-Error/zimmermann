@@ -1,0 +1,166 @@
+<mat-card>
+  <h1>List of Vehicles</h1>
+  <div class="filter-box">
+    <!--filter block-->
+    <span>
+  <mat-form-field>
+    <input matInput type="text" name="filter" placeholder="filter">
+  </mat-form-field>
+  </span>
+
+    <span>
+  <mat-form-field>
+    <input matInput [matDatepicker]="startPicker" placeholder="Choose a start date">
+    <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+    <mat-datepicker #startPicker></mat-datepicker>
+  </mat-form-field>
+  </span>
+
+    <span>
+  <mat-form-field>
+    <input matInput [matDatepicker]="endPicker" placeholder="Choose a end date">
+    <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+    <mat-datepicker #endPicker></mat-datepicker>
+  </mat-form-field>
+  </span>
+
+  </div>
+  <div>
+    <button color="primary" mat-button>Download Filtered Result as JSON</button>
+    <button color="primary" mat-button>Download Filtered Result as XML</button>
+    <button color="primary" mat-button>Download Filtered Result as YAML</button>
+  </div>
+
+  <mat-table #table [dataSource]="statusInfo">
+    <ng-container matColumnDef="LocDate">
+      <mat-header-cell *matHeaderCellDef >Location Date</mat-header-cell>
+      <mat-cell *matCellDef="let i">{{i.LocDate}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="DevId">
+      <mat-header-cell *matHeaderCellDef >Id</mat-header-cell>
+      <mat-cell *matCellDef="let i">{{i.DevId}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="UnitNum">
+      <mat-header-cell *matHeaderCellDef >Unit Number</mat-header-cell>
+      <mat-cell *matCellDef="let i">{{i.UnitNum}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="AltUnitNum">
+      <mat-header-cell *matHeaderCellDef >Alternative Unit Number</mat-header-cell>
+      <mat-cell *matCellDef="let i">{{i.AltUnitNum}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="SOG">
+      <mat-header-cell *matHeaderCellDef >SOG</mat-header-cell>
+      <mat-cell *matCellDef="let i">{{i.SOG}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="COG">
+      <mat-header-cell *matHeaderCellDef >COG</mat-header-cell>
+      <mat-cell *matCellDef="let i">{{i.COG}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Lat" >
+      <mat-header-cell *matHeaderCellDef>Latitude</mat-header-cell>
+      <mat-cell *matCellDef="let i">{{i.Lat}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Lon" >
+      <mat-header-cell *matHeaderCellDef>Longitude</mat-header-cell>
+      <mat-cell *matCellDef="let i">{{i.Lon}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="DryOn">
+      <mat-header-cell *matHeaderCellDef >Dry On</mat-header-cell>
+      <mat-cell *matCellDef="let i">{{i.DryOn}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="LiqOn">
+      <mat-header-cell *matHeaderCellDef >Liquid On</mat-header-cell>
+      <mat-cell *matCellDef="let i">{{i.LiqOn}}</mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="PWOn">
+      <mat-header-cell *matHeaderCellDef >Power On</mat-header-cell>
+      <mat-cell *matCellDef="let i">{{i.PWOn}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="TempVal">
+      <mat-header-cell *matHeaderCellDef >Temperature Value</mat-header-cell>
+      <mat-cell *matCellDef="let i">{{i.TempVal}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="AirTemp">
+      <mat-header-cell *matHeaderCellDef >Air Temperature</mat-header-cell>
+      <mat-cell *matCellDef="let i">{{i.AirTemp}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="SurfTemp">
+      <mat-header-cell *matHeaderCellDef >Surface Temperature</mat-header-cell>
+      <mat-cell *matCellDef="let i">{{i.SurfTemp}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Plow">
+      <mat-header-cell *matHeaderCellDef >Plow</mat-header-cell>
+      <mat-cell *matCellDef="let i">{{i.Plow}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Wing">
+      <mat-header-cell *matHeaderCellDef >Wing</mat-header-cell>
+      <mat-cell *matCellDef="let i">{{i.Wing}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Tow">
+      <mat-header-cell *matHeaderCellDef >Tow</mat-header-cell>
+      <mat-cell *matCellDef="let i">{{i.Tow}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="spType">
+      <mat-header-cell *matHeaderCellDef >Spreader Type</mat-header-cell>
+      <mat-cell *matCellDef="let i">{{i.spType}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="DryRate">
+      <mat-header-cell *matHeaderCellDef >DryRate</mat-header-cell>
+      <mat-cell *matCellDef="let i">{{i.DryRate}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="WetRate">
+      <mat-header-cell *matHeaderCellDef >Wet Rate</mat-header-cell>
+      <mat-cell *matCellDef="let i">{{i.WetRate}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="RateMode">
+      <mat-header-cell *matHeaderCellDef >Rate Mode</mat-header-cell>
+      <mat-cell *matCellDef="let i">{{i.RateMode}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="ioStat">
+      <mat-header-cell *matHeaderCellDef >IO Status</mat-header-cell>
+      <mat-cell *matCellDef="let i">{{i.ioStat}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="VehType">
+      <mat-header-cell *matHeaderCellDef >Vehicle Type</mat-header-cell>
+      <mat-cell *matCellDef="let i">{{i.VehType}}</mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+</mat-card>
+
+<div>
+  <h2>Pre Formatted JSON</h2>
+  <h4>Please insert true x use raw JSON joke here</h4>
+  <pre>
+  <code>
+    {{statusInfo | json}}
+  </code>
+  </pre>
+</div>
