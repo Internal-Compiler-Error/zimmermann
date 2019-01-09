@@ -7,7 +7,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {StatusReportRoutingModule} from './status-report-routing.module';
 import {
   MatButtonModule,
-  MatCardModule,
+  MatCardModule, MatCheckboxModule,
   MatDatepickerModule,
   MatFormFieldModule,
   MatInputModule,
@@ -19,6 +19,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 @NgModule({
   declarations: [StatusReportComponent],
   imports: [
+    MatCheckboxModule,
     MatCardModule,
     MatTableModule,
     MatFormFieldModule,
